@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">iLetsufiga Store</string>
+    <string name="dollar_price">$ %s</string>
+    <string name="description_label">Description: </string>
+    <string name="category_label_with_value">Description: %s</string>
+    <string name="price_label">Price: </string>
+    <string name="category_label">Category: </string>
+    <string name="item_id">Item ID: %s</string>
+    <string name="shopping_cart_menu_label">Shopping Cart</string>
+</resources>
