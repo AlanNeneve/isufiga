@@ -7,8 +7,7 @@ import com.example.iletsufigastore.webservice.ProductsWebServiceFactory
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-val mainModule = module{
-
+val viewModelModule = module{
 
     factory{
         ProductsRepository(
@@ -24,4 +23,3 @@ val mainModule = module{
     }
 
 }
-

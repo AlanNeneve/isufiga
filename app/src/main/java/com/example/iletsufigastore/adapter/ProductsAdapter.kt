@@ -10,7 +10,6 @@ import com.example.iletsufigastore.R
 import com.example.iletsufigastore.repository.Products
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.products_items.view.*
-import java.util.*
 
 open class ProductsAdapter(
     private val onItemClick: (Products) -> Unit,
