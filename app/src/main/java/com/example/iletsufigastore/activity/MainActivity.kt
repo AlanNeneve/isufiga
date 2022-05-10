@@ -3,24 +3,22 @@ package com.example.iletsufigastore.activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.iletsufigastore.R
 import com.example.iletsufigastore.adapter.ProductsAdapter
 import com.example.iletsufigastore.repository.Products
-import com.example.iletsufigastore.repository.ProductsRepository
 import com.example.iletsufigastore.viewmodel.ProductsViewModel
-import com.example.iletsufigastore.viewmodel.ProductsViewModelFactory
-import com.example.iletsufigastore.webservice.ProductsWebService
-import com.example.iletsufigastore.webservice.ProductsWebServiceFactory
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
     companion object {
         const val ID_KEY = "ID"
     }
+
+    private val viewModel: ProductsViewModel by viewModel()
 
     private val adapter = ProductsAdapter(
         onItemClick = { product: Products ->
@@ -32,18 +30,6 @@ class MainActivity : AppCompatActivity() {
         },
         context = this
     )
-
-    private val viewModel: ProductsViewModel by lazy {
-        ViewModelProvider(
-            this,
-            ProductsViewModelFactory(
-                ProductsRepository(
-                    productsWebService = ProductsWebServiceFactory.createWebService()
-                        .create(ProductsWebService::class.java)
-                )
-            )
-        )[ProductsViewModel::class.java]
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
