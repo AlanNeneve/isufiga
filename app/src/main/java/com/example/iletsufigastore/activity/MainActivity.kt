@@ -27,9 +27,17 @@ class MainActivity : AppCompatActivity() {
             extraID.putParcelable(ID_KEY, product)
             intent.putExtras(extraID)
             startActivity(intent)
-        },
+    },
         context = this
     )
+
+    fun openProductDetails(product: Products){
+            val intent = Intent(this, ProductDetailActivity::class.java)
+            val extraID = Bundle()
+            extraID.putParcelable(ID_KEY, product)
+            intent.putExtras(extraID)
+            startActivity(intent)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

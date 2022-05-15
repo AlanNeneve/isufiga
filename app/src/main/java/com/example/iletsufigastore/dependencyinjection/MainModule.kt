@@ -11,9 +11,13 @@ val viewModelModule = module{
 
     factory{
         ProductsRepository(
-            productsWebService = ProductsWebServiceFactory.createWebService()
-                .create(ProductsWebService::class.java)
+            productsWebService = get()
         )
+    }
+
+    factory {
+        ProductsWebServiceFactory.createWebService()
+            .create(ProductsWebService::class.java)
     }
 
     viewModel{
@@ -21,5 +25,6 @@ val viewModelModule = module{
             repository = get()
         )
     }
-
 }
+
+

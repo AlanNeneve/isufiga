@@ -6,9 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.iletsufigastore.repository.Products
 import com.example.iletsufigastore.repository.ProductsRepository
-import kotlinx.coroutines.Dispatchers
+import com.example.iletsufigastore.webservice.ResponseResult
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class ProductsViewModel(
     private val repository: ProductsRepository
@@ -19,10 +18,14 @@ class ProductsViewModel(
 
     fun fetchProducts() {
         viewModelScope.launch {
-            repository.getProducts(
-                onSuccess = { _state.value = State.ProductsList(it)},
-                onFailure = {Throwable("Pane no sistema alguem nao me configurou")}
-            )
+            when (val result = repository.getProducts()) {
+                is ResponseResult.Success -> {
+                    _state.value = State.ProductsList(result.data)
+                }
+                is ResponseResult.Error -> {
+                    Throwable("Pane no sistema alguem nao me configurou")
+                }
+            }
         }
     }
 
