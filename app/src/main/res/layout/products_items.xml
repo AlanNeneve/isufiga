@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:id="@+id/productLinearLayout">
+    android:id="@+id/itemLine">
 
     <ImageView
         android:id="@+id/imageView"
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
                 android:textAlignment="textEnd"
-                tools:text="@string/price_label_with_value"/>
+                tools:text="@string/price_label"/>
 
         </LinearLayout>
 

@@ -44,7 +44,7 @@ open class ProductsAdapter(
         val productItemView: TextView = rootView.productTitle
         val productImageView: ImageView = rootView.imageView
         val productPrice: TextView = rootView.productPrice
-        val productLinearLayout: LinearLayout = rootView.productLinearLayout
+        val productLinearLayout: LinearLayout = rootView.itemLine
         val productCategory: TextView = rootView.productCategory
     }
 }

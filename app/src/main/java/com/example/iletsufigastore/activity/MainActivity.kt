@@ -2,6 +2,8 @@ package com.example.iletsufigastore.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,7 +13,6 @@ import com.example.iletsufigastore.repository.Products
 import com.example.iletsufigastore.viewmodel.ProductsViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 class MainActivity : AppCompatActivity() {
 
     companion object {
@@ -27,17 +28,9 @@ class MainActivity : AppCompatActivity() {
             extraID.putParcelable(ID_KEY, product)
             intent.putExtras(extraID)
             startActivity(intent)
-    },
+        },
         context = this
     )
-
-    fun openProductDetails(product: Products){
-            val intent = Intent(this, ProductDetailActivity::class.java)
-            val extraID = Bundle()
-            extraID.putParcelable(ID_KEY, product)
-            intent.putExtras(extraID)
-            startActivity(intent)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,7 +77,21 @@ class MainActivity : AppCompatActivity() {
             adapter.configureList(it.products)
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.options_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.cartMenu){
+            val cartIntent = Intent(this, CartActivity::class.java)
+            startActivity(cartIntent)
+        }
+        return true
+    }
 }
+
 
 
 

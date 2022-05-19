@@ -1,23 +1,24 @@
 package com.example.iletsufigastore.repository
 
+import android.content.Context
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.iletsufigastore.webservice.ProductsWebService
 import com.example.iletsufigastore.webservice.ResponseResult
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
-import io.mockk.verify
 import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.runBlocking
-
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
+import org.junit.runner.manipulation.Ordering
 
-class ProductsRepositoryTest {
+class ProductsRepositoryTest(context: Context) {
 
     private val mockWebService = mockk<ProductsWebService>()
 
-    private val repository = ProductsRepository(mockWebService)
+    private val repository = ProductsRepository(context, mockWebService)
 
     @Before
     fun setUp() {
@@ -25,8 +26,7 @@ class ProductsRepositoryTest {
 
     @Test
     fun `Should return list with results when web service succeeds`() = runBlocking {
-        // AAA
-        // Arrange - Action - Assert
+        // AAA -> Arrange - Action - Assert
 
         // Arrange
         val expected = listOf(

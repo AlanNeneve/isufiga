@@ -7,4 +7,10 @@
     <string name="category_label">Category: </string>
     <string name="item_id">Item ID: %s</string>
     <string name="shopping_cart_menu_label">Shopping Cart</string>
+    <string name="search_products_label">Search Products</string>
+    <string name="shopping_cart_title">Shopping Cart</string>
+    <string name="cart_items_label">Cart Items</string>
+    <string name="quantity_label">Quantity</string>
+    <string name="subtotal_label">Sub Total</string>
+    <string name="add_remove_cart_content_description">Add or remove from cart button</string>
 </resources>

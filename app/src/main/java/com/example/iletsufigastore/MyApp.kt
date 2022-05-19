@@ -1,6 +1,8 @@
 package com.example.iletsufigastore
 
 import android.app.Application
+import com.example.iletsufigastore.dependencyinjection.CartViewModelModule
+import com.example.iletsufigastore.dependencyinjection.DetailsViewModelModule
 import com.example.iletsufigastore.dependencyinjection.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -15,6 +17,8 @@ class MyApp: Application() {
             androidContext(this@MyApp)
 
             modules(viewModelModule)
+            modules(DetailsViewModelModule)
+            modules(CartViewModelModule)
         }
     }
 }

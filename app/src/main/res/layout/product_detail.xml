@@ -13,6 +13,7 @@
         android:layout_margin="24dp"
         android:layout_marginStart="24dp"
         android:textSize="20sp"
+        android:textColor="@color/black"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -48,6 +49,7 @@
         android:layout_marginEnd="24dp"
         android:scrollbars="vertical"
         android:textSize="20sp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descriptionLabel"
@@ -71,6 +73,7 @@
         android:layout_marginStart="24dp"
         tools:text="Category"
         android:textSize="24sp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categoryLabel" />
 
@@ -90,6 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:textSize="20sp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/priceLabel"
         tools:text="$ Price" />
@@ -101,5 +105,18 @@
         tools:text="Item ID"
         app:layout_constraintEnd_toEndOf="@+id/detailImageView"
         app:layout_constraintTop_toBottomOf="@+id/detailImageView" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addOrRemoveCartButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:contentDescription="@string/add_remove_cart_content_description"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_add_cart" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

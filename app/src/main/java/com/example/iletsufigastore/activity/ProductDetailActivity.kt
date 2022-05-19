@@ -7,18 +7,55 @@ import com.example.iletsufigastore.repository.Products
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.product_detail.*
 import android.text.method.ScrollingMovementMethod
+import com.example.iletsufigastore.repository.ProductCartItemMapper
+import com.example.iletsufigastore.viewmodel.ProductDetailViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProductDetailActivity : AppCompatActivity() {
+
+    private val viewModel: ProductDetailViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.product_detail)
 
         val selectedProduct = intent.extras?.getParcelable<Products>(MainActivity.ID_KEY)
+        if(selectedProduct != null){
+            val category = formatCategory(selectedProduct.category)
+            bindViews(selectedProduct, category)
+            itemInCartObserver(selectedProduct)
+            viewModel.onCreate(ProductCartItemMapper.productToCartItem(
+                selectedProduct)
+            )
+        } else {
+            finish() // Fazer algo mais decente aqui ou um check melhor
+        }
+    }
 
-        val category = formatCategory(selectedProduct?.category)
-
-        bindViews(selectedProduct, category)
+    private fun itemInCartObserver(selectedProduct: Products) {
+        viewModel.isInCart.observe(
+            this, { isInCart ->
+                if (isInCart) {
+                    addOrRemoveCartButton.setImageResource(R.drawable.ic_remove_cart)
+                    addOrRemoveCartButton.setOnClickListener {
+                        viewModel.removeFromCart(
+                            ProductCartItemMapper.productToCartItem(
+                                selectedProduct
+                            )
+                        )
+                    }
+                } else {
+                    addOrRemoveCartButton.setImageResource(R.drawable.ic_add_cart)
+                    addOrRemoveCartButton.setOnClickListener {
+                        viewModel.addToCart(
+                            ProductCartItemMapper.productToCartItem(
+                                selectedProduct
+                            )
+                        )
+                    }
+                }
+            }
+        )
     }
 
     private fun bindViews(selectedProduct: Products?, category:String?) {
@@ -35,4 +72,5 @@ class ProductDetailActivity : AppCompatActivity() {
     private fun formatCategory(category: String?): String? {
         return category?.replaceFirstChar { it.uppercase() }
     }
+
 }

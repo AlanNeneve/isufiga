@@ -19,7 +19,7 @@ object ProductsWebServiceFactory {
     }
 
     private fun provideHttpClient() = OkHttpClient.Builder()
-        .readTimeout(10, TimeUnit.SECONDS)
+        .readTimeout(50, TimeUnit.SECONDS)
         .connectTimeout(30,TimeUnit.SECONDS)
         .build()
 }
