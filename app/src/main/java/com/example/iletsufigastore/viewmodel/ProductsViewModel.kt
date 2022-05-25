@@ -23,6 +23,9 @@ class ProductsViewModel(
                     _state.value = State.ProductsList(result.data)
                 }
                 is ResponseResult.Error -> {
+                    /*
+                    FIUSAHFASIUFHASIUFHSAIUFH
+                     */
                     Throwable("Pane no sistema alguem nao me configurou")
                 }
             }

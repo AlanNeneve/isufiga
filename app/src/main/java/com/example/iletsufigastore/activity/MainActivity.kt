@@ -16,6 +16,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : AppCompatActivity() {
 
     companion object {
+        /*
+        Isso aqui também é muito bom, é recomendado evitar o uso de valores de Strings de forma
+        solta no código e usar uma variável constante para isso.
+         */
         const val ID_KEY = "ID"
     }
 
@@ -23,6 +27,9 @@ class MainActivity : AppCompatActivity() {
 
     private val adapter = ProductsAdapter(
         onItemClick = { product: Products ->
+            /*
+            Aqui o trecho que eu mencionei que poderia ter sido refatorado para um método.
+             */
             val intent = Intent(this, ProductDetailActivity::class.java)
             val extraID = Bundle()
             extraID.putParcelable(ID_KEY, product)
@@ -32,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         context = this
     )
 
+    // Massa, tá bem organizado!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

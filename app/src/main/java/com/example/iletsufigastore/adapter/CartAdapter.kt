@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.products_items.view.imageView
 import kotlinx.android.synthetic.main.products_items.view.productPrice
 import kotlinx.android.synthetic.main.products_items.view.productTitle
 
+// A classe tá bem organizada, tá massa, velho!
 class CartAdapter(
     private val items: List<CartItems>,
     private val onItemClick: (Products) -> Unit,
