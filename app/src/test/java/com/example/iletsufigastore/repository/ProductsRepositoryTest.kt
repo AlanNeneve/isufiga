@@ -20,6 +20,14 @@ class ProductsRepositoryTest(context: Context) {
 
     private val repository = ProductsRepository(context, mockWebService)
 
+    /*
+    Vamos marcar de continuar a construir os testes aqui. Quais foram
+    os pontos de dificuldade que você sentiu quando tentou criar os testes
+    para os restantes dessa classe e para os outros repositórios que criou?
+    Ainda temos que criar testes para os ViewModels também. Liste os pontos de dificuldade
+    de forma mais descritiva possível e vamos marcar uma sessão para esclarecer e criar os exemplos.
+     */
+
     @Before
     fun setUp() {
     }

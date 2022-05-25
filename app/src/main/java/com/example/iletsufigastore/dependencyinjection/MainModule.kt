@@ -11,6 +11,12 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
+/*
+Massa que tu fez essa divisão por funcionalidades na hora de declerar
+os módulos para criação do grafo das dependências. Dê uma olhada no Google
+em "divisão de pacotes por feature ou layer" e depois me diga o que tu aprendeu.
+ */
+
 val viewModelModule = module{
 
     factory{

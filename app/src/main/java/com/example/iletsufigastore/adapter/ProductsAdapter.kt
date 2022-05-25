@@ -26,6 +26,13 @@ open class ProductsAdapter(
 
     fun configureList(products: List<Products>) {
         this.products = products
+        /*
+        Vale dar uma pesquisada na internet sobre os problemas relacionados
+        ao uso de `notifyDataSetChanged()` e quais possíveis melhorias seriam feitas aqui.
+        Esse tema é algo que poderia ser questionado no teu processo para um emprego. Não
+        precisa saber implementar o correto, mas saber identificar o que está errado e quais
+        possíveis caminhos é interessante.
+         */
         notifyDataSetChanged()
     }
 
@@ -33,6 +40,10 @@ open class ProductsAdapter(
         val volume = products[position]
         holder.productItemView.text = volume.title
         Picasso.get().load(volume.image).error(R.drawable.broken_image).into(holder.productImageView)
+        /*
+        Uso de strings pelo resources com o placeholder que está sendo usado para configurar
+        o preço, boa!
+         */
         holder.productPrice.text = context.getString(R.string.dollar_price, volume.price.toString())
         holder.productLinearLayout.setOnClickListener { onItemClick(volume) }
         holder.productCategory.text = volume.category.replaceFirstChar { it.uppercase() }

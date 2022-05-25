@@ -29,6 +29,11 @@ class ProductsRepository(
     }
 
     fun searchProduct(query: String) =
+        /*
+        Isso aqui também é observado numa análise de código, mostra
+        que você tem domínio sobre os métodos que o Kotlin tem para
+        as coleções, nesse caso, o `filter`.
+         */
         products.filter { it.title.contains(query, ignoreCase = true) }
 
     suspend fun addToCart(item: CartItems) {
@@ -45,6 +50,13 @@ class ProductsRepository(
 
     fun allCartItems(): Flow<List<CartItems>> {
         return dao.allCartItems()
+            /*
+            Mesmo caso do comentário acima, agora com o `map`, mostra conhecimento sobre
+            as funções de collections do Kotlin. Muitos processos de entrevistas
+            tem um ponto de avaliação para proficiência com a linguagem escolhida
+            e aqui nesse caso, quem estivesse analisando poderia coletar isso como evidência
+            do teu conhecimento.
+             */
             .map { productsList ->
                 productsList.map { product ->
                     ProductCartItemMapper.productToCartItem(product)

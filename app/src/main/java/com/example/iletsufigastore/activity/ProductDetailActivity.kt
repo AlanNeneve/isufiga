@@ -34,6 +34,13 @@ class ProductDetailActivity : AppCompatActivity() {
 
     private fun itemInCartObserver(selectedProduct: Products) {
         viewModel.isInCart.observe(
+            /*
+            A primeira coisa que você pode fazer aqui é seguir a sugestão da IDE
+            e fazer a alteração sugerida no ALT + ENTER. Depois, acho que vale
+            notar que boa parte do código é parecido, o que muda é o ícone configurado
+            e a ação feita pelo ViewModel. Como tu pensa em transformar isso num método
+            em que esses 2 pontos sejam configurados?
+             */
             this, { isInCart ->
                 if (isInCart) {
                     addOrRemoveCartButton.setImageResource(R.drawable.ic_remove_cart)
@@ -64,6 +71,7 @@ class ProductDetailActivity : AppCompatActivity() {
         detailTitle.text = selectedProduct?.title
         productDescription.text = selectedProduct?.description
         productCategory.text = category
+        // Massa que tu tá usando as strings pelo resources lá no strings.xml, boa!
         productPrice.text = this.getString(R.string.dollar_price, selectedProduct?.price.toString())
         productDescription.movementMethod = ScrollingMovementMethod()
         productID.text = this.getString(R.string.item_id, selectedProduct?.id.toString())
