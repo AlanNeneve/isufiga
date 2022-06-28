@@ -8,11 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.iletsufigastore.R
+import com.example.iletsufigastore.activity.ProductDetailActivity.Companion.startProductDetailActivity
 import com.example.iletsufigastore.adapter.ProductsAdapter
 import com.example.iletsufigastore.repository.Products
 import com.example.iletsufigastore.viewmodel.ProductsViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 class MainActivity : AppCompatActivity() {
 
     companion object {
@@ -23,11 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     private val adapter = ProductsAdapter(
         onItemClick = { product: Products ->
-            val intent = Intent(this, ProductDetailActivity::class.java)
-            val extraID = Bundle()
-            extraID.putParcelable(ID_KEY, product)
-            intent.putExtras(extraID)
-            startActivity(intent)
+            startProductDetailActivity(product)
         },
         context = this
     )
@@ -91,9 +89,4 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 }
-
-
-
-
-
 

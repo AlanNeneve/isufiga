@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.iletsufigastore.R
+import com.example.iletsufigastore.activity.ProductDetailActivity.Companion.startProductDetailActivity
 import com.example.iletsufigastore.adapter.CartAdapter
 import com.example.iletsufigastore.repository.Products
 import com.example.iletsufigastore.webservice.CartItemsViewModel
@@ -21,7 +22,7 @@ class CartActivity : AppCompatActivity() {
 
         configureRecyclerView()
 
-        cartObserver()
+        configureCartObserver()
     }
 
     private fun configureRecyclerView() {
@@ -29,15 +30,11 @@ class CartActivity : AppCompatActivity() {
         cartRecyclerView.layoutManager = layoutManager
     }
 
-    private fun cartObserver() {
+    private fun configureCartObserver() {
         viewModel.cartItems.observe(this) { items ->
             cartRecyclerView.adapter = CartAdapter(items,
                 onItemClick = { item: Products ->
-                    val intent = Intent(this, ProductDetailActivity::class.java)
-                    val extraID = Bundle()
-                    extraID.putParcelable(MainActivity.ID_KEY, item)
-                    intent.putExtras(extraID)
-                    startActivity(intent)
+                    startProductDetailActivity(item)
                 }
             )
         }

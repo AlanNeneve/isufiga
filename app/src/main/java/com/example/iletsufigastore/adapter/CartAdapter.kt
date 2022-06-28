@@ -42,3 +42,4 @@ class CartAdapter(
         val itemPrice: TextView = rootView.productPrice
     }
 }
+

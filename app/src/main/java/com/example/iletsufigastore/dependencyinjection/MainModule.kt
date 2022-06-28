@@ -1,6 +1,7 @@
 package com.example.iletsufigastore.dependencyinjection
 
 import androidx.core.content.ContentProviderCompat.requireContext
+import com.example.iletsufigastore.repository.ProductsDatabase
 import com.example.iletsufigastore.repository.ProductsRepository
 import com.example.iletsufigastore.viewmodel.ProductDetailViewModel
 import com.example.iletsufigastore.viewmodel.ProductsViewModel
@@ -16,7 +17,7 @@ val viewModelModule = module{
     factory{
         ProductsRepository(
             productsWebService = get(),
-            context = androidContext()
+            dao = ProductsDatabase.getDatabase(androidContext()).getBookDao()
         )
     }
 
